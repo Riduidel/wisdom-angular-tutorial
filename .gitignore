@@ -1,0 +1,10 @@
+./chameleon/
+target/
+.project
+.settings
+.classpath
+logs
+*.iml
+.idea
+
+.java-version
