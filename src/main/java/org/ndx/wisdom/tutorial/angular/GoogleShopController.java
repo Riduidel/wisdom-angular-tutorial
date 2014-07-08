@@ -10,7 +10,7 @@ import org.wisdom.api.templates.Template;
 
 @Controller
 public class GoogleShopController extends DefaultController {
-	private static final String LIST = "/list";
+	public static final String LIST = "/list";
 	/**
 	 * Ici "list" est le nom du fichier du template, sans l'extension thl.html
 	 */
