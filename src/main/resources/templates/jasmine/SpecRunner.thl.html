@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Jasmine Spec Runner v2.0.0</title>
+
+<link rel="shortcut icon" type="image/png"
+	th:href="${#routes.asset('jasmine_favicon.png')}"/>
+<link rel="stylesheet" type="text/css"
+	th:href="${#routes.asset('jasmine.css')}"/>
+
+<script type="text/javascript" th:src="${#routes.asset('jasmine.js')}"></script>
+<script type="text/javascript"
+	th:src="${#routes.asset('jasmine-html.js')}"></script>
+<script type="text/javascript" th:src="${#routes.asset('boot.js')}"></script>
+
+<!-- include lib dependencies here -->
+<script th:src="${#routes.asset('angular.js')}"></script>
+<script th:src="${#routes.asset('angular-mocks.js')}"></script>
+
+<!-- include source files here... -->
+<script src="/assets/js/controllers.js"></script>
+
+<!-- include spec files here... -->
+<script src="/assets/spec/controllers.js"></script>
+
+</head>
+
+<body>
+</body>
+</html>
