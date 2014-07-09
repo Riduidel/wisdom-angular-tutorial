@@ -23,7 +23,7 @@ public class Step07IsImplementedIT  extends WisdomFluentLeniumTest {
 		await();
 		assertThat(url()).contains("#");
 		assertThat(url()).endsWith("/phones/nexus-s");
-		FluentLeniumAssertions.assertThat(findFirst("#phoneId")).hasText("nexus-s");
+		FluentLeniumAssertions.assertThat(findFirst("h1")).hasText("Nexus S");
 	}
 
 }
