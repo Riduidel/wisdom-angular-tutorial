@@ -3,12 +3,10 @@ package org.ndx.wisdom.tutorial.angular;
 
 import java.util.Collection;
 
-import org.fluentlenium.assertj.FluentLeniumAssertions;
 import org.fluentlenium.core.domain.FluentList;
 import org.fluentlenium.core.domain.FluentWebElement;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.wisdom.test.parents.WisdomFluentLeniumTest;
 
 import com.google.common.base.Function;
@@ -38,21 +36,18 @@ public class Step04IsImplementedIT  extends WisdomFluentLeniumTest {
 		return Collections2.transform(items, new Function<FluentWebElement, String>() {
 
 			public String apply(FluentWebElement input) {
-				return input.findFirst("span").getText();
+				// le deuxième lien contient le nom !
+				return input.find("a", 1).getText();
 			}});
 	}
 
-	/**
-	 * @see http://stackoverflow.com/q/24648963/15619 pour les détails sur le test du driver
-	 */
 	@Test
 	public void canTestPageCorrectly() {
-		assertThat(getDriver()).isInstanceOf(FirefoxDriver.class);
 		goTo(GoogleShopController.LIST);
 		FluentList<FluentWebElement> items = find("li");
 		fill("input").with("tablet");
 		await();
-		items = find(".phone");
+		items = find("li");
 		assertThat(names(items)).containsExactly(
 				        "Motorola XOOM\u2122 with Wi-Fi",
 				        "MOTOROLA XOOM\u2122");
@@ -60,7 +55,7 @@ public class Step04IsImplementedIT  extends WisdomFluentLeniumTest {
 		// Et maintenant on change le filtre
 		fillSelect("select").withValue("name");
 		await();
-		items = find(".phone");
+		items = find("li");
 		assertThat(names(items)).containsExactly(
 				        "MOTOROLA XOOM\u2122",
 						"Motorola XOOM\u2122 with Wi-Fi"
