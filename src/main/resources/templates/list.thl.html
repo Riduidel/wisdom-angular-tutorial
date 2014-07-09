@@ -1,6 +1,7 @@
 <!doctype html>
 <html data-ng-app="phonecatApp">
 <head>
+<meta charset="utf-8"/>
 <link th:href="${#routes.asset('css/bootstrap.css')}" rel="stylesheet" />
 <script th:src="${#routes.asset('angular.js')}"></script>
 <script src="/assets/js/controllers.js"></script>
@@ -12,14 +13,18 @@
 			<div class="col-md-2">
 				<!--Sidebar content-->
 
-				Search: <input ng-model="query"/>
+				Search: <input ng-model="query" /> Sort by: <select
+					ng-model="orderProp">
+					<option value="name">Alphabetical</option>
+					<option value="age">Newest</option>
+				</select>
 
 			</div>
 			<div class="col-md-10">
 				<!--Body content-->
 
 				<ul class="phones" id="phones">
-					<li ng-repeat="phone in phones | filter:query" class="phone">{{phone.name}}
+					<li ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="phone">{{phone.name}}
 						<p>{{phone.snippet}}</p>
 					</li>
 				</ul>
