@@ -1,0 +1,1 @@
+var PHONES_LIST = 'assets/phones/phones.json'; 

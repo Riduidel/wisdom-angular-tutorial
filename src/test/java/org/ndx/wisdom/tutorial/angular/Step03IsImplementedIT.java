@@ -26,15 +26,15 @@ public class Step03IsImplementedIT  extends WisdomFluentLeniumTest {
 		assertThat(getDriver()).isInstanceOf(FirefoxDriver.class);
 		goTo(GoogleShopController.LIST);
 		FluentList<FluentWebElement> items = find("li");
-		FluentLeniumAssertions.assertThat(items).hasSize(3);
+		FluentLeniumAssertions.assertThat(items).hasSize().greaterThanOrEqualTo(3);
 		fill("input").with("nexus");
 		await();
 		items = find(".phone");
-		FluentLeniumAssertions.assertThat(items).hasSize(1);
+		FluentLeniumAssertions.assertThat(items).hasSize().greaterThanOrEqualTo(1);
 		fill("input").with("motorola");
 		await();
 		items = find(".phone");
-		FluentLeniumAssertions.assertThat(items).hasSize(2);
+		FluentLeniumAssertions.assertThat(items).hasSize().greaterThanOrEqualTo(2);
 	}
 
 }
