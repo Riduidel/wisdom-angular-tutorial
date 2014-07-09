@@ -5,22 +5,22 @@
 <p>{{phone.description}}</p>
 
 <ul class="phone-thumbs">
-  <li ng-repeat="img in phone.images">
-    <img ng-src="assets/{{img}}">
-  </li>
+	<li ng-repeat="img in phone.images"><img ng-src="assets/{{img}}" width="40" height="40">
+	</li>
 </ul>
 
 <ul class="specs">
-  <li>
-    <span>Availability and Networks</span>
-    <dl>
-      <dt>Availability</dt>
-      <dd ng-repeat="availability in phone.availability">{{availability}}</dd>
-    </dl>
-  </li>
-    ...
-  <li>
-    <span>Additional Features</span>
-    <dd>{{phone.additionalFeatures}}</dd>
-  </li>
+	<li><span>Availability and Networks</span>
+		<dl>
+			<dt>Availability</dt>
+			<dd ng-repeat="availability in phone.availability">{{availability}}</dd>
+		</dl></li>
+	<li><span>Additional Features</span>
+		<dd>{{phone.additionalFeatures}}</dd></li>
 </ul>
+<dl>
+	<dt>Infrared</dt>
+	<dd>{{phone.connectivity.infrared | checkmark}}</dd>
+	<dt>GPS</dt>
+	<dd>{{phone.connectivity.gps | checkmark}}</dd>
+</dl>
