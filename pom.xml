@@ -37,13 +37,13 @@
 			<artifactId>bootstrap</artifactId>
 			<version>${bootstrap.version}</version>
 		</dependency>
- 	
-<!-- librairie de test javascript -->
-<dependency>
-    <groupId>org.webjars</groupId>
-    <artifactId>jasmine</artifactId>
-    <version>2.0.0</version>
-</dependency>
+
+		<!-- librairie de test javascript -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jasmine</artifactId>
+			<version>2.0.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.wisdom-framework</groupId>
@@ -147,6 +147,9 @@
 							<goal>verify</goal>
 						</goals>
 						<configuration>
+							<systemPropertyVariables>
+								<fluentlenium.browser>firefox</fluentlenium.browser>
+							</systemPropertyVariables>
 							<properties>
 								<property>
 									<name>listener</name>
