@@ -24,6 +24,7 @@
 		<wisdom.version>0.6.1</wisdom.version>
 		<angular.version>1.2.19</angular.version>
 		<bootstrap.version>3.2.0</bootstrap.version>
+		<jasmine.version>2.0.0</jasmine.version>
 	</properties>
 
 	<dependencies>
@@ -42,7 +43,7 @@
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jasmine</artifactId>
-			<version>2.0.0</version>
+			<version>${jasmine.version}</version>
 		</dependency>
 
 		<dependency>
@@ -129,6 +130,14 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.wisdom-framework</groupId>
 				<artifactId>wisdom-maven-plugin</artifactId>
