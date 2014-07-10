@@ -3,19 +3,19 @@
 <head>
 <title>Jasmine Spec Runner v2.0.0</title>
 
-<link rel="shortcut icon" type="image/png"
+ <link rel="shortcut icon" type="image/png"
 	th:href="${#routes.asset('jasmine_favicon.png')}"/>
-<link rel="stylesheet" type="text/css"
+ <link rel="stylesheet" type="text/css"
 	th:href="${#routes.asset('jasmine.css')}"/>
 
 <script type="text/javascript" th:src="${#routes.asset('jasmine.js')}"></script>
 <script type="text/javascript"
 	th:src="${#routes.asset('jasmine-html.js')}"></script>
 <script type="text/javascript" th:src="${#routes.asset('boot.js')}"></script>
-
 <!-- include lib dependencies here -->
 <script th:src="${#routes.asset('angular.js')}"></script>
 <script th:src="${#routes.asset('angular-route.js')}"></script>
+<script th:src="${#routes.asset('angular-resource.js')}"></script>
 <script th:src="${#routes.asset('angular-mocks.js')}"></script>
 
 <!-- include source files here... -->
@@ -23,10 +23,12 @@
 <script src="/assets/js/app.js"></script>
 <script src="/assets/js/filters.js"></script>
 <script src="/assets/js/controllers.js"></script>
+<script src="/assets/js/services.js"></script>
 
 <!-- include spec files here... -->
 <script src="/assets/spec/controllers.js"></script>
 <script src="/assets/spec/filters.js"></script>
+<script src="/assets/spec/services.js"></script>
 
 </head>
 

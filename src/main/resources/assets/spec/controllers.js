@@ -1,14 +1,25 @@
 describe('PhoneCat controllers', function() {
 
+	beforeEach(function() {
+		jasmine.addMatchers({
+			toEqualData : function(util, customEqualityTesters) {
+				return {
+					compare : function(actual, expected) {
+						var result = {};
+						result.pass = angular.equals(actual, expected);
+						return result;
+					}
+				}
+			}
+		});
+	});
+
+	beforeEach(module('phonecatApp'));
+	beforeEach(module('phonecatServices'));
+
 	describe('PhoneListCtrl', function() {
 		var scope, ctrl, $httpBackend;
 
-		// Load our app module definition before each test.
-		beforeEach(module('phonecatApp'));
-
-		// The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
-		// This allows us to inject a service but then attach it to a variable
-		// with the same name as the service in order to avoid a name conflict.
 		beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
 			$httpBackend = _$httpBackend_;
 			$httpBackend.expectGET(PHONES_LIST).respond([ {
@@ -24,10 +35,10 @@ describe('PhoneCat controllers', function() {
 		}));
 
 		it('should create "phones" model with 2 phones fetched from xhr', function() {
-			expect(scope.phones).toBeUndefined();
+			expect(scope.phones).toEqualData([]);
 			$httpBackend.flush();
 
-			expect(scope.phones).toEqual([ {
+			expect(scope.phones).toEqualData([ {
 				name : 'Nexus S'
 			}, {
 				name : 'Motorola DROID'
@@ -39,18 +50,17 @@ describe('PhoneCat controllers', function() {
 		});
 	});
 
-	// Celui-là est là parce que PhoneDetailCtrl utilise les routes pour se charger, et doit donc avoir 
-	// un routeur initialisé avant
-	beforeEach(module('phonecatApp'));
-
 	describe('PhoneDetailCtrl', function() {
-		var scope, $httpBackend, ctrl;
+		var scope, $httpBackend, ctrl, xyzPhoneData = function() {
+			return {
+			    name : 'phone xyz',
+			    images : [ 'image/url1.png', 'image/url2.png' ]
+			}
+		};
 
 		beforeEach(inject(function(_$httpBackend_, $rootScope, $routeParams, $controller) {
 			$httpBackend = _$httpBackend_;
-			$httpBackend.expectGET(PHONES_PATH + 'xyz.json').respond({
-				name : 'phone xyz'
-			});
+			$httpBackend.expectGET(PHONES_PATH + 'xyz.json').respond(xyzPhoneData());
 
 			$routeParams.phoneId = 'xyz';
 			scope = $rootScope.$new();
@@ -60,12 +70,10 @@ describe('PhoneCat controllers', function() {
 		}));
 
 		it('should fetch phone detail', function() {
-			expect(scope.phone).toBeUndefined();
+			expect(scope.phone).toEqualData({});
 			$httpBackend.flush();
 
-			expect(scope.phone).toEqual({
-				name : 'phone xyz'
-			});
+			expect(scope.phone).toEqualData(xyzPhoneData());
 		});
 	});
 });
