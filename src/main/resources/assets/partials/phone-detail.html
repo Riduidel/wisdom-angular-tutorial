@@ -1,4 +1,9 @@
-<img ng-src="assets/{{mainImageUrl}}" class="phone">
+<div class="phone-images">
+  <img ng-src="assets/{{img}}"
+       class="phone"
+       ng-repeat="img in phone.images"
+       ng-class="{active:mainImageUrl==img}">
+</div>
 
 <h1>{{phone.name}}</h1>
 
@@ -6,7 +11,7 @@
 
 <ul class="phone-thumbs">
   <li ng-repeat="img in phone.images">
-    <img ng-src="assets/{{img}}" ng-click="setImage(img)" width="40" height="40"/>
+    <img ng-src="assets/{{img}}"  ng-mouseenter="setImage(img)" width="40" height="40"/>
   </li>
 </ul>
 
